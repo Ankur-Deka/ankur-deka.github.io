@@ -1,21 +1,72 @@
 <!DOCTYPE html>
 <html>
-<body>
+<style>
+*{box-sizing: border-box;}
+.column{
+	float:left;
+	width: 33.33%;
+	padding:5px;
+}
+.row::after{
+	content:"";
+	clear:both;
+	display:table;
+
+}
+</style>
+<body style="margin:5%;">
 	<!-- Heading and Intro -->
 	<h1 style = "text-align: center">Car Stunts using Machine Learning</h1>
 	<p style = "font-size:150%">
-		In this project I will enable a toy car to learn to perform stunts such as drifting and parallel parking by itself through machine learning. I will walk you through the progess of my project right from modifying an RC car to implementing the machine learning algorithms. I'll be building custom designs from scratch so that if you are interested, you can also make your own stunt car and even improve upon my design.
+		In this project I will enable a toy car to learn to perform stunts such as drifting and parallel parking by itself through machine learning. I will walk you through the progess of my project right from modifying an RC car to implementing the machine learning algorithms. I'll build custom designs from scratch so that if you are interested, you can also make your own stunt car and even improve upon my design.
 		My inspiration came from <a href = "https://www.youtube.com/watch?v=opsmd5yuBF0" target = "_blank"> MIT's autonomous drifting using machine learning</a>. 
 	</p>
 
 	<!-- Modifying the car's hardware -->
 	<h2> RC Car Hack </h2>
+	
+	<div class="row">
+		<div class="column">
+			<img src="media/Fig1_modified_car.jpg" style="width:100%;" alt="Modified Car">
+		</div>
+		<div class="column">
+			<img src="media/Fig2_labeled_diagram.jpg" style="width:100%;" alt="Modified Car">
+		</div>
+		<div class="column">
+			<img src="media/Fig3_modified_car.jpg" style="width:100%;" alt="Modified Car">
+		</div>
+	</div>
+	<figcaption style="font-size:150%; text-align: center;">The modified car. I wish I could put the yellow shell on the chassis but the extra electronics has taken up too much space.</figcaption>
 
+	<p style = "font-size:150%">
+		I purchased this <a href = "https://www.amazon.in/gp/product/B01BN6954Q/ref=oh_aui_search_asin_title?ie=UTF8&psc=1" target = "_blank">RC Car</a> from Amazon India. The wheels turned out to be slightly slippery and the car would often drift at turns, making it well suited for my project.
+	</p>
+	<p>
+		<font size = "5">
+			Here's how I modified the car:
+			<ul>
+				<li>Removed the original circuitry</li>
+				<li>Replaced the steering control motor with a servo motor for precise control over the angle</li>
+				<li>Added a Raspberry Pi 3 for processing</li>
+				<li>Added a motor driver</li>
+				<li>Added a power bank to power the Raspberry Pi</li>
+
+			</ul>
+		</font>
+	</p>
+	
 	<!-- Simulation -->
+
 	<h2> Training on Simulation </h2>
-	<video width = "600" style = "display: block; margin: 0 auto;" controls>
-		<source src="media/Webots_RL.mp4" type="video/mp4">
+	<p style = "font-size:150%">
+		It's a good idea to run a simulation of the test environment because I'll be using Reinforcement Learning (RL), a subset of Machine Learning, which requires a lot of time to train. I'll use the <a href = "https://cyberbotics.com/" target = "_blank">Webots Simulator</a> which is user-friendly and has several pre-designed robots that you can directly work on. As an initial test, I used Q-Learning, which is a type of Reinforcement Learning, to train a car to learn to self-drive to its goal. While working on simulation, I could easily speed up time and get a day's training done in a few minutes. The following video shows the final driving performance after training. 
+	</p>
+	<video style = "display: block; margin: 0 auto; width:700px" controls>
+		<source src="Webots_RL.mp4" type="video/mp4">
 	</video>
+	<p style = "font-size:150%">	
+		As you can see, my car learnt a not so natural way to drive backwards and turn around just before reaching the goal. Fantastic!	Next I'll try to transfer this amazing reverse driving skill that the car has learnt on simulation to the actual toy car.
+	</p> 
  	
 </body>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -24,5 +75,5 @@
           google_ad_client: "ca-pub-7655505199715236",
           enable_page_level_ads: true
      });
-</script>	
+</script> 
 </html>
