@@ -1,79 +1,343 @@
-<!DOCTYPE html>
-<html>
-<style>
-*{box-sizing: border-box;}
-.column{
-	float:left;
-	width: 33.33%;
-	padding:5px;
-}
-.row::after{
-	content:"";
-	clear:both;
-	display:table;
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-}
-</style>
-<body style="margin:5%;">
-	<!-- Heading and Intro -->
-	<h1 style = "text-align: center">Car Stunts using Machine Learning</h1>
-	<p style = "font-size:150%">
-		In this project I will enable a toy car to learn to perform stunts such as drifting and parallel parking by itself through machine learning. I will walk you through the progess of my project right from modifying an RC car to implementing the machine learning algorithms. I'll build custom designs from scratch so that if you are interested, you can also make your own stunt car and even improve upon my design.
-		My inspiration came from <a href = "https://www.youtube.com/watch?v=opsmd5yuBF0" target = "_blank"> MIT's autonomous drifting using machine learning</a>. 
-	</p>
+  <title>Ankur Deka</title>
+  
+  <meta name="author" content="Ankur Deka">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/seal_icon.png">
+</head>
 
-	<!-- Modifying the car's hardware -->
-	<h2> RC Car Hack </h2>
-	
-	<div class="row">
-		<div class="column">
-			<img src="media/Fig1_modified_car.jpg" style="width:100%;" alt="Modified Car">
-		</div>
-		<div class="column">
-			<img src="media/Fig2_labeled_diagram.jpg" style="width:100%;" alt="Modified Car">
-		</div>
-		<div class="column">
-			<img src="media/Fig3_modified_car.jpg" style="width:100%;" alt="Modified Car">
-		</div>
-	</div>
-	<figcaption style="font-size:150%; text-align: center;">The modified car. I wish I could put the yellow shell on the chassis but the extra electronics has taken up too much space.</figcaption>
+<body>
+  <table style="width:100%;max-width:1200px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Ankur Deka</name>
+              </p>
+              <p>I am a Master's student at the <a href="https://www.ri.cmu.edu/ri-people/ankur-deka/165105">Robotics Institute</a>, Carnegie Mellon University (CMU) working on Multi Agent Reinforcement Learning (MARL) advised by <a href="https://en.wikipedia.org/wiki/Katia_Sycara">Prof. Katia Sycara</a>.
+              </p>
+              <p>
+                Prior to this, I completed my BTech in Electronics and Commmunication Engineering and Computer Science from Indian Institute of Technology (IIT) Guwahati in 2019. I have worked on Socially-Aware robot navigation at <a href="https://irc.atr.jp/en/research-projects/">ATR IRC Lab, Japan</a> in <a href="https://scholar.google.com/citations?user=l89ykZMAAAAJ&hl=en">Dr. Norihiro Hagita's</a> group and on 3D reconstruction and segmentation of medical images at Chubu University, Japan in <a href="http://www.cvl.cs.chubu.ac.jp/">Prof. Yuji Iwahori's</a> group.
+              </p>
+              <p>
+                I have received the <a href="https://www.jntataendowment.org/">J N Tata Scholarship</a> for graduate studies and was selected for <a href="http://www.kvpy.iisc.ernet.in/main/index.htm">KVPY (English: Young Scientist Incentive Plan)</a>.
+              </p>
+              <p style="text-align:center">
+                <a href="mailto:adeka@cs.cmu.edu">Email</a> &nbsp/&nbsp
+                <a href="https://www.youtube.com/c/AnkurDeka/videos">YouTube</a>&nbsp/&nbsp
+                <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp/&nbsp -->
+                <!-- <a href="data/JonBarron-bio.txt">Biography</a> &nbsp/&nbsp -->
+                <a href="https://scholar.google.com/citations?user=CaBIO8cAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
+                <a href="https://www.linkedin.com/in/ankur-deka-120392135/">LinkedIn</a>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:40%;max-width:40%">
+              <a href="images/ankur.jpg"><img style="width:80%;max-width:100%" alt="profile photo" src="images/ankur.jpg" class="hoverZoomLink rounded-corners"></a>
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Updates</heading>
+              <p>
+                <ul>
+                  <li>[Sept 2020] <a href="https://youtu.be/rEWBgJyXOLY"><b>Invited to talk</b></a> at RedOne Technologies, South Korea about my work on MARL.</li>
+                  <li>[July 2020] Presented our paper in a <a href="https://youtu.be/ltHgKYc0F-E"><b>Spotlight Talk</b></a> at RSS 2020 MRTA Workshop.</li>
+                  <li>[Sept 2019] Joined CMU RI as graduate student.</li>
+                  <li>[July 2019] Received <a href="https://www.jntataendowment.org/"><b>J N Tata scholarship</b></a> for graduate studies.</li>
+                  <li>[June 2019] Graduated from IIT Guwahati.</li>
+                  <li>[Jan 2018] Presented our paper and received <a href="http://www.bioimaging.biostec.org/PreviousAwards.aspx"><b>Best Poster Award</b></a> at Bioimaging 2018 Conference, Portugal.</li>
+                  <li>[Jan 2018] Started an the initiative <a href="https://www.facebook.com/IgnoTech-699964836834129/"><b>IgnoTech</b></a>.</li>
+                  <li>[Oct 2016] Received <b>1st Position</b> in Robothlon 2016.
+                  <li>[Aug 2015] Joined IIT Guwahati as an undergraduate student.</li>
+                  <li>[May 2013] Received <a href="https://potentialconcept.wordpress.com/tag/concept-brainstorm/"><b>Brainstorm scholarship</b></a>.</li>
+                </ul>
+              </p>
 
-	<p style = "font-size:150%">
-		I purchased this <a href = "https://www.amazon.in/gp/product/B01BN6954Q/ref=oh_aui_search_asin_title?ie=UTF8&psc=1" target = "_blank">RC Car</a> from Amazon India. The wheels turned out to be slightly slippery and the car would often drift at turns, making it well suited for my project.
-	</p>
-	<p>
-		<font size = "5">
-			Here's how I modified the car:
-			<ul>
-				<li>Removed the original circuitry</li>
-				<li>Replaced the steering control motor with a servo motor for precise control over the angle</li>
-				<li>Added a Raspberry Pi 3 for processing</li>
-				<li>Added a motor driver</li>
-				<li>Added a power bank to power the Raspberry Pi</li>
+              <heading>Research</heading>
+              <p>
+                I am interested in Artificial Intelligence (AI) agents that can act in the world, learn from their experiences and adapt to changes in the environment. Such versatile agents would ultimately improve the quality of human life - robots would provide relief in disasters, perform daily chores in homes and help perform surgeries. I have explored areas of Reinforcement Learning, Computer Vision, Deep Learning, Probabilistic Modeling and hardware design of mechanisms/electronics. 
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-			</ul>
-		</font>
-	</p>
-	
-	<!-- Simulation -->
+            <tr onmouseout="lssr_stop()" onmouseover="lssr_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/fortattack_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://arxiv.org/pdf/2007.03102.pdf">
+                <papertitle>Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>,
+              <a href="https://en.wikipedia.org/wiki/Katia_Sycara">Katia Sycara</a>
+              <br>
+              <em>RSS Workshop</em>, 2020  &nbsp <font color=#FF8080><strong>(Spotlight)</strong></font>
+              <br>
+              <a href="https://arxiv.org/pdf/2007.03102.pdf">arXiv</a>/
+              <a href="https://youtu.be/ltHgKYc0F-E">video</a>/
+              <a href="https://github.com/Ankur-Deka/Emergent-Multiagent-Strategies">code</a>
+              <p></p>
+              <p>
+                Complex multi-agent strategies can naturally emerge out of competition between teams.
+              </p>
+            </td>
+          </tr> 
 
-	<h2> Training on Simulation </h2>
-	<p style = "font-size:150%">
-		It's a good idea to run a simulation of the test environment because I'll be using Reinforcement Learning (RL), a subset of Machine Learning, which requires a lot of time to train. I'll use the <a href = "https://cyberbotics.com/" target = "_blank">Webots Simulator</a> which is user-friendly and has several pre-designed robots that you can directly work on. As an initial test, I used Q-Learning, which is a type of Reinforcement Learning, to train a car to learn to self-drive to its goal. While working on simulation, I could easily speed up time and get a day's training done in a few minutes. The following video shows the final driving performance after training. 
-	</p>
-	<video style = "display: block; margin: 0 auto; width:700px" controls>
-		<source src="media/Webots_RL.mp4" type="video/mp4">
-	</video>
-	<p style = "font-size:150%">	
-		As you can see, my car learnt a not so natural way to drive backwards and turn around just before reaching the goal. Fantastic!	Next I'll try to transfer this amazing reverse driving skill that the car has learnt on simulation to the actual toy car.
-	</p> 
- 	
+          <tr onmouseout="dualrefl_stop()" onmouseover="dualrefl_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/wrc_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+              <script type="text/javascript">
+                function dualrefl_start() {
+                  document.getElementById('wrc_image').style.opacity = "0";
+                }
+
+                function dualrefl_stop() {
+                  document.getElementById('wrc_image').style.opacity = "1";
+                }
+                dualrefl_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://www.sciencedirect.com/science/article/pii/S1877050919315182/pdf?md5=521ff13a97e105dc448d3d9dccbe0522&pid=1-s2.0-S1877050919315182-main.pdf">
+                <papertitle>Contour-Aware Residual W-Net for Nuclei Segmentation</papertitle>
+              </a>
+              <br>
+              <a href="">Sushmita Das</a>,
+              <strong>Ankur Deka</strong>,
+              <a href="http://www.cvl.cs.chubu.ac.jp/">Yuji Iwahori</a>,
+              <a href="https://www.iitg.ac.in/eee/mkb.html">M K Bhuyan</a>,
+              <a href="https://www.chubu.ac.jp/english/faculty/profile/6322fcf3ae47743e17deca4b73899194b102cfe7.html">Takashi Iwamoto</a>,
+              <a href="https://scholar.google.com/citations?user=vidbBXgAAAAJ&hl=en">Jun Ueda</a>
+              <br>
+              <em>KES</em>, 2019
+              <br>
+              <a href="https://www.sciencedirect.com/science/article/pii/S1877050919315182/pdf?md5=521ff13a97e105dc448d3d9dccbe0522&pid=1-s2.0-S1877050919315182-main.pdf">paper</a>
+              <!-- <a href="https://arxiv.org/abs/2010.00702">arXiv</a> -->
+              <p></p>
+              <p>
+                Learning to detect nuclei boundaries can help improve segmentation.
+              </p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/adalstm_thumbnail.mp4" type="video/mp4">
+              </video>
+              <script type="text/javascript">
+                function nlt_start() {
+                  document.getElementById('nlt_image').style.opacity = "1";
+                }
+
+                function nlt_stop() {
+                  document.getElementById('nlt_image').style.opacity = "0";
+                }
+                nlt_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://www.researchgate.net/publication/327227986_Adaptive_Attention-Aware_Pedestrian_Trajectory_Prediction_for_Robot_Planning_in_Human_Environments">
+                <papertitle>Adaptive Attention-Aware Pedestrian Trajectory Prediction for Robot Planning in Human Environments</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>,
+              <a href="https://scholar.google.com/citations?user=NyZZWnwAAAAJ&hl=en">Vishnu K Narayanan</a>,
+              <a href="https://www.miyasita.org/about-me">Takahiro Miyashita</a>,
+              <a href="https://scholar.google.com/citations?user=l89ykZMAAAAJ&hl=en">Norihiro Hagita</a>
+              <br>
+              <em>IROS Workshop</em>, 2018  
+              <br>
+              <a href="https://www.researchgate.net/publication/327227986_Adaptive_Attention-Aware_Pedestrian_Trajectory_Prediction_for_Robot_Planning_in_Human_Environments">paper</a>
+              <p></p>
+              <p>Proposed an Spatio-Temporal Graph based framework for pedestrian trajectory prediction along with an improved attention model.</p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nerfw_stop()" onmouseover="nerfw_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/dense3d_thumbnail.mp4" type="video/mp4">
+              </video>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://www.scitepress.org/Papers/2018/67207/67207.pdf">
+                <papertitle>Dense 3D Reconstruction of Endoscopic Polyp</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <a href="http://www.cvl.cs.chubu.ac.jp/">Yuji Iwahori</a>,
+              <a href="https://www.iitg.ac.in/eee/mkb.html">M K Bhuyan</a>,
+              <a href="https://www.researchgate.net/profile/Pradipta_Sasmal">Pradipta Sasmal</a>,
+              <a href="https://www.researchgate.net/profile/Kunio_Kasugai">Kunio Kasugai</a>
+              <br>
+              <em>BIOIMAGING</em>, 2018 &nbsp <font color=#FF8080><strong>(Best Poster Award)</strong></font>  
+              <br>
+              <a href="https://www.scitepress.org/Papers/2018/67207/67207.pdf">paper</a> /
+              <a href="http://www.bioimaging.biostec.org/PreviousAwards.aspx">award</a> 
+              <!-- <a href="https://www.youtube.com/watch?v=yPKIxoN2Vf0">video</a> -->
+              <p></p>
+              <p>Reconstruction of 3D shape of polyp from 2 monocular endoscopy images with unknown transformation.</p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/rc_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://youtu.be/U0-Jswwf0hw">
+                <papertitle>Self Driving and Drifting RC Car</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <br>
+              <em>Hobby Project</em>, 2019  
+              <br>
+              <a href="https://youtu.be/U0-Jswwf0hw">video</a> 
+              <p></p>
+              <p>Sim2Real transfer of low-level control policy for self-driving and drifting using q-learning. The project involved creating a simulation environment and training a policy in simulation, modifying the hardware of an RC car, setting up visual trackers, integrating the system with Robot Operating System (ROS) and finally transferring the simulation policy to the real world.</p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/ball_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://youtu.be/LUydDPmLBvY">
+                <papertitle>Robotic Ball</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <br>
+              <em>Hobby Project</em>, 2016  
+              <br>
+              <a href="https://youtu.be/LUydDPmLBvY">video</a> 
+              <p></p>
+              <p>A ball robot similar to BB8 Droid, that can be wirelessly controlled from a long distance to maneuver. There are no external actuators and the robot looks like a normal ball from the outside.</p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/gaming_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://youtu.be/OOULjI39AWQ">
+                <papertitle>Gaming Bot</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <br>
+              <em>Hobby Project</em>, 2016  
+              <br>
+              <a href="https://youtu.be/OOULjI39AWQ">video</a> 
+              <p></p>
+              <p>I was bad at the Chrome browser's dinosaur game, so I made a robot to play it.</p>
+            </td>
+          </tr> 
+
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/scanner_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://youtu.be/AJD9HWBMAiA">
+                <papertitle>Scanner from CD Drive</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <br>
+              <em>Hobby Project</em>, 2013  
+              <br>
+              <a href="https://youtu.be/AJD9HWBMAiA">video</a> 
+              <p></p>
+              <p>I made an image scanner from a broken CD drive.</p>
+            </td>
+          </tr> 
+          
+          <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <video width="200" playsinline autoplay muted loop>
+                <source src="images/gribot_thumbnail.mp4" type="video/mp4">
+              </video>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://youtu.be/Hr8xzgCNpLU">
+                <papertitle>Gribot - The Gripper Robot</papertitle>
+              </a>
+              <br>
+              <strong>Ankur Deka</strong>
+              <br>
+              <em>Hobby Project</em>, 2011  
+              <br>
+              <a href="https://youtu.be/Hr8xzgCNpLU">video</a> 
+              <p></p>
+              <p>I made made my first robot, a remote-controller pick and place machine from broken toys.</p>
+            </td>
+          </tr> 
+         
+
+
+
+        </tbody></table>
+
+        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+          <tr>
+            <td>
+              <heading>Service</heading>
+            </td>
+          </tr>
+        </tbody></table>
+        <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+          <tr>
+            <td width="75%" valign="center">
+              Started an initiative <a href="https://www.facebook.com/IgnoTech-699964836834129/">IgnoTech</a> and taught basic electronics and robotics to over 200 students
+              <br>
+              Taught Mathematics to <a href="http://prismeduventures.com/">IIT JEE asiprants</a> 
+              <br>
+              Branch Representative of ECE branch at <a href="https://www.iitg.ac.in/eee/acadbtech.html#acadbtechStart">IIT Guwahati</a> (2015-2019) 
+            </td>
+          </tr>
+          
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:left;font-size:small;">
+                Thanks to Jon Barron for providing the nice website template <a href="https://github.com/jonbarron/jonbarron_website">website template</a>.
+                
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
 </body>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7655505199715236",
-          enable_page_level_ads: true
-     });
-</script> 
+
 </html>
